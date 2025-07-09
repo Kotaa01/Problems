@@ -1,0 +1,747 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1b1d1f;
+    color: #cecece;
+    line-height: 1.6;
+    /*padding-left: 100px; /* Default for mobile */
+}
+
+
+/*...Main Search bar...*/
+    /*...Search box...*/
+        .search {
+            width: 100%;
+            position: relative;
+        }
+        .search__input {
+            font-family: inherit;
+            font-size: 1rem;
+            background-color: #2d2f31;
+            border: 1px solid #cecece;
+            color: #cecece;
+            padding: 0.7rem 3rem 0.7rem 1rem;
+            border-radius: 30px;
+            width: 100%;
+            transition: all ease-in-out 0.3s;
+            box-shadow: 0 2px 6px rgba(195, 194, 194, 0.1);
+        }
+        /* If your input has a different class */
+            #search-input::placeholder {
+                color: #868686 !important;
+            }
+    /*...Search icon...*/
+        .search__button {
+            position: absolute;
+            right: 0.5rem;
+            top: 45%;
+            transform: translateY(-50%);
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .search__icon {
+            height: 1.3em;
+            width: 1.3em;
+            fill: #cecece;
+            transition: fill 0.3s ease;
+        }
+
+        .search__icon:hover {
+            fill: #0077b6;
+        }
+
+/*...All categories box margine...*/
+    .categories-container {
+
+        padding: 0 15px;
+        /*background-color: #6a1b9a;  */
+    }
+
+    /*...Category box margine...*/
+    .category-section {
+        margin-bottom: 3rem;
+    }
+    /*...Category titles...*/
+        .category-title {
+            display: inline-block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 0.4rem 1rem;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+            border: 1px solid #0077b6;
+            border-radius: 20px;
+            color: #cecece;
+            background-color: transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-transform: capitalize;
+        }
+        .category-title:hover {
+            background-color: rgba(0, 119, 182, 0.1);
+            border-color: #0096ff;
+        }
+            /* Light mode adjustments */
+        body.light-mode .category-title {
+            color: #333;
+            border-color: #0077b6;
+        }
+
+        body.light-mode .category-title:hover {
+            background-color: rgba(0, 119, 182, 0.05);
+        }
+
+/*...Raw background boarder...*/
+    .problems-row {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        padding-bottom: 1rem;
+        gap: 15px;
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+        scroll-snap-type: x mandatory; /* Optional: snap scrolling */
+        scrollbar-width: none; /* Hide scrollbar for Firefox */
+    }
+
+    .problems-row::-webkit-scrollbar {
+        display: none; /* Hide scrollbar for Chrome/Safari */
+    }
+
+/*...Problem cards...*/
+    .problem-card {
+        scroll-snap-align: start;
+        flex: 0 0 220px;
+        background-color: #2d2f31;
+        border-radius: 30px;
+        /*box-shadow: rgba(0, 0, 0, 0.2);  */
+        transition: all 0.3s ease;
+        overflow: hidden;
+        cursor: pointer;
+        animation: fadeInUp 0.5s ease forwards;
+        opacity: 0;
+    }
+
+    .problem-card:hover {
+        transform: translateY(-5px);
+        background-color: #202224;
+        /*box-shadow: 0px 5px 10px rgba(1, 103, 255, 0.1); */
+    }
+
+    .problem-card .card-body {
+        padding: 1.25rem;
+        
+    }
+
+                    /* Add to your CSS */
+                .card-image-container {
+                    height: 100px; /* Fixed height for the image container */
+                    overflow: hidden;
+                    border-top-left-radius: 30px;
+                    border-top-right-radius: 30px;
+                }
+
+                .card-image {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover; /* Ensures the image covers the container */
+                    transition: transform 0.3s ease;
+                }
+
+                .problem-card:hover .card-image {
+                    transform: scale(1.05); /* Slight zoom on hover */
+                }
+
+.problem-date {
+    color: #cecece !important; /* Force white color */
+    font-size: 0.7rem;
+    opacity: 0.8; /* Slightly transparent for better visual hierarchy */
+}
+.problem-category {
+    display: inline-block;
+    padding: 0.25em 0.6em;
+    font-size: 0.75em;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+    margin-bottom: 0;
+    background-color: #0077b6;
+
+}
+
+/*...Categoried tags...*/
+.academic { background-color: #e3f2fd; color: #0077b6; }
+.career { background-color: #e8f5e9; color: #2e7d32; }
+.personal { background-color: #f3e5f5; color: #6a1b9a; }
+.financial { background-color: #fff8e1; color: #ff8f00; }
+.health { background-color: #ffebee; color: #c62828; }
+
+/*...Category navigation button (next/preview)...*/
+    .category-nav-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #cecece;
+        border: none;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        opacity: 0.8;
+    }
+
+    .category-nav-btn:hover {
+        opacity: 1;
+        background-color: #1b1d1f;
+        color: white;
+    }
+
+    .prev-btn {
+        left: 0px;
+    }
+
+    .next-btn {
+        right: 0px;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+/*Popup window (solution)...*/
+
+                /* If you want to change only specific modal headers */
+                #solution-modal .modal-header{
+                flex-shrink: 0; /* Prevent header from shrinking */
+                position: sticky;
+                top: 0;
+                z-index: 1050;
+                background-color: #2d2f31 !important;
+                border-bottom: none;
+                }
+
+                #solution-modal .modal-content {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+                background-color: #1b1d1f;
+                color: #cecece;
+                
+                }
+                #solution-modal .modal-dialog {
+                max-height: 80vh; /* Match solution modal height */
+                display: flex;
+                flex-direction: column;
+                   
+                }
+                #solution-modal .modal-body {
+                flex: 1;
+                overflow-y: auto;
+                padding: 20px;
+                
+                }
+
+    /*...Search Panel background...*/
+        .search-panel {
+            background-color: #2d2f31;
+            border: 1px solid #444444;
+            padding: 15px;
+            border-radius: 8px;
+            
+        }
+
+    /*...Search Results box...*/
+        .search-results-container {
+            height: 250px;
+            overflow-y: auto;
+            background-color: #1b1d1f;
+            border: 1px solid #444444;
+            border-radius: 20px;
+            padding: 10px;
+            margin-bottom: 15px;
+            
+        }
+
+    /*...Search Results items...*/
+        .search-result-item {
+            padding: 8px 0;
+            border-bottom: 1px solid #444444;
+        }
+
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-result-item h6 {
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .search-result-item p {
+            font-size: 0.85rem;
+            color: #c7c7c7;
+            margin-bottom: 0.25rem;
+        }
+
+        .search-result-item a {
+            font-size: 0.8rem;
+            color: #cecece;
+            text-decoration: none;
+        }
+
+        .search-result-item a:hover {
+            text-decoration: underline;
+        }
+
+    /* AI Suggestions */
+        .ai-suggestion-item {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .ai-suggestion-item:last-child {
+            border-bottom: none;
+        }
+
+        .ai-suggestion-item .badge {
+            margin-right: 8px;
+        }
+
+    /*...AI Button...*/
+        #ai-suggest-btn {
+            background-color: #202224;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        #ai-suggest-btn:hover {
+            background-color: #1b1d1f;
+            transform: translateY(-1px);
+        }
+
+        #ai-suggest-btn:active {
+            transform: translateY(0);
+        }
+
+        #solution-modal .modal-footer {
+        flex-shrink: 0; /* Prevent footer from shrinking */
+        position: sticky;
+        bottom: 0;
+        background-color: #2d2f31;
+        border-top: 1px solid #444444;
+        z-index: 1050;
+        }
+        /* Change the footer close button color */
+        #solution-modal .modal-footer .btn {
+            background-color: #202224; /* Red color */
+            border: none;
+            color: white;
+        }
+
+        #solution-modal .modal-footer .btn:hover {
+            background-color: #1b1d1f; /* Darker red on hover */
+        }
+        
+                /* Collapsible solution sections */
+                .solution-step {
+                    border-bottom: 1px solid #444444;
+                    /*margin-bottom: 1rem;
+                    padding-bottom: 1rem;*/
+                }
+
+                .step-title {
+                    font-weight: 600;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: 0.5rem 0;
+                    transition: all 0.2s ease;
+                }
+
+                .step-title:hover {
+                    color: #444444;
+                }
+
+                .step-title::after {
+                    content: '\f078';
+                    font-family: 'Font Awesome 6 Free';
+                    font-weight: 900;
+                    transition: transform 0.3s ease;
+                    margin-left: 0.5rem;
+                    color: #444444;
+                }
+
+                .step-title.collapsed::after {
+                    transform: rotate(-90deg);
+                    
+                }
+
+                .step-content {
+                    padding: 0.5rem 0 0 1rem;
+                    display: none;
+                    animation: fadeIn 0.3s ease;
+                }
+
+                .step-content.show {
+                    display: block;
+                }
+
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(-10px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+
+/*Index section(manage layer order)*/
+/* For the category modal */
+#categoryModal.modal {
+    z-index: 1050; /* Standard Bootstrap modal z-index */
+    
+}
+
+/* Change border radius for all modal windows(Popup window (solution)) */
+        /* popup window (soluton) background */
+        .modal-content {
+            border-radius: 20px !important; /* Adjust this value as needed */
+            overflow: hidden; /* Ensures child elements respect the border radius */
+            border: none;
+            
+        }
+
+        /* For the solution modal that appears on top */
+        #solution-modal.modal {
+            z-index: 1060; /* Higher than category modal */
+            
+        }
+
+        /* For the modal backdrops */
+        .modal-backdrop {
+            z-index: 1040; /* Standard backdrop z-index */
+            
+        }
+
+        /* Second backdrop for nested modal */
+        .modal-backdrop + .modal-backdrop {
+            z-index: 1055; /* Between category modal and solution modal */
+        }
+
+/* Change modal header color from blue to gray */
+.modal-header {
+    background-color: #0077b6 !important; /* Bootstrap's gray color */
+    color: white;
+    border-bottom: none;
+  
+}
+
+
+/* Optional: Change the close button color to match */
+.modal-header .btn-close {
+    filter: invert(1) brightness(100%); /* Makes the X icon white */
+}
+
+/*Popup window (Category section)...*/
+
+    #categoryModal .modal-header {
+    flex-shrink: 0; /* Prevent header from shrinking */
+    position: sticky;
+    top: 0;
+    z-index: 1050;
+    background-color: #2d2f31 !important;
+    border-bottom: none;
+    }
+    #categoryModal .modal-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: #1b1d1f;
+    color: #cecece;
+    }
+    #categoryModal .modal-dialog {
+    max-height: 80vh; /* Match solution modal height */
+    display: flex;
+    flex-direction: column;
+    }
+    #categoryModal .modal-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    }
+    /* Search bar inside category modal */
+    .categoryModal .search {
+        margin-bottom: 15px;
+        position: sticky;
+        top: 0;
+        background: #184e83;
+        color: #cecece;
+        padding-top: 10px;
+        z-index: 1040;
+    }
+
+
+
+
+    #categoryModal .modal-footer {
+        flex-shrink: 0; /* Prevent footer from shrinking */
+        position: sticky;
+        bottom: 0;
+        background-color: #2d2f31;
+        border-top: 1px solid #444444;
+        z-index: 1050;
+    }
+
+    /* Make it match solution modal size */
+    #categoryModal .modal-dialog.modal-xl {
+        max-width: 1140px;
+        margin: 1.75rem auto;
+    }
+
+
+    .category-problem-card {
+        flex: 0 0 300px;
+        margin-bottom: 20px;
+        transition: transform 0.3s ease;
+        background-color: #2d2f31;
+        border-radius: 30px;
+       /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); */
+        overflow: hidden;
+        cursor: pointer;    
+    }
+
+    .category-problem-card:hover {
+        transform: translateY(-5px);
+        background-color: #202224;
+        /*box-shadow: 0 10px 20px rgba(1, 103, 255, 0.1); */
+    }
+
+    .category-problem-card .card-body {
+        padding: 1.25rem;
+    }
+    
+    /* Change the footer close button color */
+        #categoryModal .modal-footer .btn {
+            background-color: #202224; 
+            border: none;
+            color: white;
+        }
+
+        #categoryModal .modal-footer .btn:hover {
+            background-color: #1b1d1f;
+        }
+
+
+/*Translator drop down section...*/
+ /*................*/
+
+/* Side Bar */
+        .sidebar {
+            position: fixed;
+            top: 30%;
+            left: 10px;
+            display: flex;
+            flex-direction: column;
+            background: #2d2f31;
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 60px;
+            height: 250px;
+            z-index: 11;
+            
+        }
+
+        .sidebar-icon {
+            margin: 11px;
+            display: block;
+            text-align: center;
+            position: relative;
+            transition: transform 0.4s;
+        }
+
+        .sidebar-icon:hover::after {
+            content: attr(data-title);
+            position: absolute;
+            left: 60px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #444444;
+            color: #cecece;
+            padding: 5px 10px;
+            border-radius: 5px;
+            white-space: nowrap;
+            font-size: 10px;
+        }
+
+        .sidebar-icon img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .sidebar-icon:hover {
+            transform: scale(1.2);
+        }
+
+/*Mobile view...*/
+    @media (max-width: 768px) {
+        .body{
+            padding-left: none; /* Default for mobile */
+        }
+        
+        .problem-card {
+            flex: 0 0 220px; /* Reduced from 280px to 220px */
+            margin-bottom: 10px; /* Reduced spacing */
+            
+        }
+        .problem-card .card-body {
+            padding: 0.8rem; /* Reduced padding inside cards */
+        }
+        .problem-card .card-title {
+            font-size: 0.9rem; /* Smaller title text */
+        }
+        .problem-card .card-text {
+            font-size: 0.8rem; /* Smaller description text */
+        }           
+        .problem-category {
+            font-size: 0.65em; /* Smaller category badge */
+            margin-bottom: 0.5rem; /* Reduced spacing */
+        }        
+        .modal-content .row {
+            flex-direction: column;
+        }
+        
+        .search-panel {
+            border-left: none;
+            border-top: 1px solid #dee2e6;
+        }
+        .category-title {
+            font-size: 0.8rem;
+            padding: 0.3rem 0.8rem;
+            margin: 0.3rem 0.3rem 0.3rem 0;
+        }
+
+        .category-problem-card {
+            flex: 0 0 220px;
+        }
+        
+        #categoryModal .category-problem-card {
+        flex: 0 0 100%; /* Full-width cards */
+        width: 220px;
+        margin-bottom: 12px; /* Tighter spacing */
+        border-radius: 30px; /* Slightly rounded corners */
+        }
+
+        /* Card content adjustments */
+        #categoryModal .category-problem-card .card-body {
+            padding: 1rem; /* Compact padding */
+        }
+
+    
+
+/* Side Bar in Mobile View */
+       
+            .sidebar {
+                top: auto;
+                bottom: 10px;
+                left: 50%;
+                transform: translateX(-50%);
+                flex-direction: row;
+                width: auto;
+                height: 60px;
+                border-radius: 10px;
+                padding: 0 10px;
+            }
+
+            .sidebar-icon {
+                margin: 0 auto;
+                padding: 10px;
+            }
+
+            .sidebar-icon:hover::after {
+                left: 50%;
+                transform: translate(-50%, -50%);
+                top: -40px;
+            }
+
+}
+
+
+/*...Disable Image downloading...*/
+img {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+
+
+/* styles.css */
+        /* Button container */
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        /* Individual download buttons */
+        .step-download-btn {
+            background-color: #2d2f31;
+            color: white;
+            border: 1px solid #444;
+            border-radius: 20px;
+            padding: 8px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            margin-top: -15px;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .step-download-btn:hover {
+            background-color: #3a3d40;
+            transform: translateY(-2px);
+        }
+
+        .step-download-btn i {
+            font-size: 16px;
+        }
+
+        /* PDF buttons get special color */
+        .step-download-btn .fa-file-pdf {
+            color: #0077b6;
+        }
+
+        /* Disabled state */
+        .step-download-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none !important;
+        }
